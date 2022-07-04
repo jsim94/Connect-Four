@@ -91,7 +91,7 @@ function endGame(msg) {
     alert(msg);
     location.reload();
     return false;
-  }, 0);
+  }, 320);
 }
 
 /*  ~~DONE~~

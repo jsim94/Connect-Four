@@ -1,10 +1,64 @@
-#board {
-  /* position: relative; */
+body {
+  color: #222;
+  background: #b0f3f1;
+
+  font: 16px/22px helvetica;
+  margin: 0;
+  min-height: 100vh;
 }
+
+.background {
+  content: linear-gradient(45deg, blue 0%, red 100%);
+  height: 200vw;
+  width: 200vw;
+  border-radius: 50%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100vw;
+  margin-left: -100vw;
+  animation: spin 8s infinite linear;
+  z-index: -1;
+}
+
+#header {
+  background: rgba(102, 152, 255, 0.2);
+  color: white;
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.3);
+  width: 100vw;
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+  font-size: larger;
+  z-index: 100000;
+}
+
+.inner-header {
+  overflow: hidden;
+  padding: 10px;
+  text-align: center;
+}
+
+.wrapper {
+  margin-inline: auto;
+  max-width: 45rem;
+}
+
+#game {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding: 45px 0px;
+  border-radius: 30px;
+  margin-top: 50px;
+}
+
+#board {
+  position: relative;
+}
+
 /* game board table */
 #board td {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
   border: solid 1px #666;
 }
 
@@ -20,13 +74,11 @@
 
 /* pieces are div within game table cells: draw as colored circles */
 .piece {
-  margin: 5px;
-  width: 40px;
-  height: 40px;
+  margin: 8px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
-  transform: translateY(-25px);
-  position: absolute;
-  animation: drop 0.5s ease-in;
+  animation: drop 0.3s ease-in;
 }
 
 .player1 {
@@ -39,9 +91,18 @@
 
 @keyframes drop {
   from {
-    transform: translateY(-400px);
+    transform: translateY(-600px);
   }
   to {
     transform: translateY(-25px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
