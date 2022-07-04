@@ -108,23 +108,23 @@ function checkForWin() {
     //  - returns true if all are legal coordinates & all match currPlayer
 
     return cells.every(([x, y]) => {
-      if (x >= 0 && x < HEIGHT && y >= 0 && y < WIDTH && board[x][y] === currPlayer) return true;
+      if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT && board[x][y] === currPlayer) return true;
     });
   }
   // start from every array cell and create a horizontal, vertical, and diagonal arrays to check for 4 in a row.
-  for (let x = 0; x < HEIGHT; x++) {
-    for (let y = 0; y < WIDTH; y++) {
+  for (let x = 0; x < WIDTH; x++) {
+    for (let y = 0; y < HEIGHT; y++) {
       const horiz = [
-        [x, y],
-        [x, y + 1],
-        [x, y + 2],
-        [x, y + 3],
-      ];
-      const vert = [
         [x, y],
         [x + 1, y],
         [x + 2, y],
         [x + 3, y],
+      ];
+      const vert = [
+        [x, y],
+        [x, y + 1],
+        [x, y + 2],
+        [x, y + 3],
       ];
       const diagDR = [
         [x, y],
@@ -138,8 +138,11 @@ function checkForWin() {
         [x + 2, y - 2],
         [x + 3, y - 3],
       ];
-
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
+        if (_win(horiz)) console.log("horiz", x, y, "x");
+        if (_win(vert)) console.log("vert");
+        if (_win(diagDR)) console.log("diagDR");
+        if (_win(diagDL)) console.log("diagDL");
         return true;
       }
     }
