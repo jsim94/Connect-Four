@@ -8,10 +8,6 @@
 const WIDTH = 7;
 const HEIGHT = 6;
 const TIE_CONDITION = WIDTH * HEIGHT;
-const PLAYER1 = true;
-const PLAYER2 = false;
-const PLAYER1_COLOR = "red";
-const PLAYER2_COLOR = "blue";
 
 let currPlayer = true; // true = player1 false = player2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
@@ -76,7 +72,7 @@ function findSpotForCol(x) {
 function placeInTable(x, y) {
   const correctCell = document.getElementById(`${x}-${y}`);
   const newPiece = document.createElement("div");
-  newPiece.setAttribute("class", `piece ${currPlayer ? PLAYER1_COLOR : PLAYER2_COLOR}`);
+  newPiece.setAttribute("class", `piece ${currPlayer ? "player1" : "player2"}`);
   correctCell.append(newPiece);
 }
 
@@ -84,7 +80,7 @@ function placeInTable(x, y) {
     setNewPiece: add piece to memory and call placeInTable
 */
 function setNewPiece(x, y) {
-  board[x][y] = currPlayer ? PLAYER1 : PLAYER2;
+  board[x][y] = currPlayer;
 }
 
 /*  ~~DONE~~
@@ -175,7 +171,7 @@ function handleClick(e) {
 
   // check for win
   if (checkForWin()) {
-    return endGame(`Player ${currPlayer ? "1" : "2"} won!`);
+    return endGame(`Player ${currPlayer ? "1" : "2"} wins!`);
   }
 
   if (checkForTie()) {
