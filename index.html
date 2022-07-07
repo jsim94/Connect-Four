@@ -3,15 +3,60 @@
   <head>
     <title>Connect 4</title>
     <link href="connect4.css" rel="stylesheet" />
+    <style id="playerColors">
+      .player1 {
+        background-color: hsl(0, 100%, 50%);
+      }
+      .player2 {
+        background-color: hsl(241, 100%, 50%);
+      }
+    </style>
+    <style id="background">
+      .background {
+        content: linear-gradient(45deg, hsl(250, 100%, 50%) 0%, hsl(0, 100%, 50%) 100%);
+      }
+    </style>
   </head>
   <body>
-    <img class="background"></img>
+    <img class="background" />
     <div id="header">
-      <div class="inner-header wrapper"><h1>CONNECT FOUR</h1></div>
+      <h1 style="display: inline">CONNECT FOUR</h1>
+      and checkers!(kinda!)
     </div>
 
-    <div id="game"class="wrapper">
-      <table id="board" ></table>
+    <div class="wrapper">
+      <div class="player">
+        <div><h2>PLAYER 1</h2></div>
+        <div class="color-selector">
+          <div>
+            <label>Color</label> <br />
+            <input type="range" id="player1" max="360" step="1" value="0" />
+          </div>
+          <div class="preview player1"></div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <input type="button" id="playConnectFour" value="Play Connect Four" /><br />
+        <input type="button" id="playCheckers" value="Play Checkers" /><br />
+        <input type="button" id="reset" value="Reset Game" disabled />
+      </div>
+
+      <div class="player">
+        <div><h2>PLAYER 2</h2></div>
+        <div class="color-selector">
+          <div>
+            <label>Color</label> <br />
+            <input type="range" id="player2" max="360" step="1" value="250" />
+          </div>
+          <div class="preview player2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <table id="board"></table>
+      <div class="win-screen"><span style="opacity: 100%">Player 1 wins!</span></div>
     </div>
 
     <script src="connect4.js"></script>

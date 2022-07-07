@@ -8,7 +8,6 @@ body {
 }
 
 .background {
-  content: linear-gradient(45deg, blue 0%, red 100%);
   height: 200vw;
   width: 200vw;
   border-radius: 50%;
@@ -17,7 +16,8 @@ body {
   left: 50%;
   margin-top: -100vw;
   margin-left: -100vw;
-  animation: spin 8s infinite linear;
+  transition: background-image 1s ease-in-out;
+  animation: spin 15s infinite linear;
   z-index: -1;
 }
 
@@ -29,6 +29,8 @@ body {
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
   font-size: larger;
   z-index: 100000;
+  text-align: center;
+  padding: 25px;
 }
 
 .inner-header {
@@ -39,16 +41,65 @@ body {
 
 .wrapper {
   margin-inline: auto;
-  max-width: 45rem;
-}
-
-#game {
+  max-width: 46rem;
   background-color: white;
   display: flex;
   justify-content: center;
-  padding: 45px 0px;
+  padding: 30px 0px;
   border-radius: 30px;
-  margin-top: 50px;
+  margin-top: 24px;
+}
+
+.win-screen {
+  display: flex;
+  background: white;
+  opacity: 85%;
+  top: 46%;
+  padding: 50px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid;
+  position: absolute;
+  align-items: center;
+  font-size: xxx-large;
+  font-weight: bold;
+  visibility: hidden;
+}
+
+.player {
+  width: 50%;
+  text-align: center;
+  margin-top: -20px;
+}
+
+.player h2 {
+  width: 200px;
+  margin: 10px auto;
+  border-radius: 15px;
+}
+
+.color-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  margin-inline: 5px;
+  border: 1px solid;
+}
+
+.buttons {
+  text-align: center;
+  margin-top: 10px;
+  line-height: 2rem;
+}
+
+.buttons input {
+  width: 130px;
 }
 
 #board {
@@ -64,12 +115,13 @@ body {
 
 /* column-top is table row of clickable areas for each column */
 #column-top td {
-  border: dashed 1px lightgray;
+  border: dashed 1px grey;
   border-radius: 50%;
 }
 
 #column-top td:hover {
   background-color: gold;
+  border-style: solid;
 }
 
 /* pieces are div within game table cells: draw as colored circles */
@@ -78,20 +130,17 @@ body {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  animation: drop 0.3s ease-in;
+  outline: 1px solid;
+  /* animation: drop 0.3s ease-in; */
 }
 
-.player1 {
-  background-color: red;
-}
-
-.player2 {
-  background-color: blue;
+.selected {
+  outline: 5px solid;
 }
 
 @keyframes drop {
   from {
-    transform: translateY(-600px);
+    transform: translateY(-1000px);
   }
   to {
     transform: translateY(-25px);
